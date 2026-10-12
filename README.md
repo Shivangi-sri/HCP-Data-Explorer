@@ -3,6 +3,8 @@
 A React + TypeScript app that shows 50,000 doctor (HCP) records in a table. The table can be
 grouped, sorted, searched and edited. Everything runs in the browser, there is no backend.
 
+Live demo: https://hcp-data-explorer-tawny.vercel.app/
+
 ```bash
 npm install && npm run dev
 ```
