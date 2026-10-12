@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+}
+
+button, input, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Theme colours arrive as CSS variables set on .app (see theme.ts). */
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--text);
+}
+
+header {
+  padding: 10px 16px;
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+}
+
+.toolbar input, .toolbar select, .toolbar button {
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--text) 30%, transparent);
+  border-radius: var(--radius);
+  background: var(--background);
+}
+
+.toolbar input {
+  width: 240px;
+}
+
+.toolbar button:disabled {
+  opacity: 0.4;
+}
+
+.toolbar .tenant {
+  margin-left: auto;
+}
+
+/* Grid */
+.scroller {
+  flex: 1;
+  overflow: auto;
+  margin: 0 16px;
+  border: 1px solid color-mix(in srgb, var(--text) 20%, transparent);
+  border-radius: var(--radius);
+}
+
+.row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 760px;
+  height: 32px;
+  display: grid;
+  grid-template-columns: 130px 1fr 150px 110px 100px 100px 80px;
+  align-items: center;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+.row > * {
+  padding: 0 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.header {
+  position: sticky;
+  z-index: 1;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+}
+
+.header button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-weight: inherit;
+}
+
+.group {
+  grid-template-columns: 1fr 110px 100px 100px 80px;
+  background: var(--surface);
+}
+
+.group.level-0 {
+  font-weight: 700;
+}
+
+.group.level-1 .group-toggle {
+  padding-left: 28px;
+}
+
+.group-toggle {
+  height: 100%;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-weight: inherit;
+  cursor: pointer;
+}
+
+.muted {
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+/* Source-data problems that are shown, not hidden. */
+.flag {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.empty {
+  position: absolute;
+  top: 48px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Calls cell. The edit states use fixed colours plus an icon, not theme
+   colours, so they stay distinguishable under every tenant theme. */
+.calls, .calls-input {
+  display: inline-block;
+  width: 100%;
+  height: 24px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: none;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+button.calls {
+  cursor: pointer;
+}
+
+button.calls:hover, .calls-input {
+  border-color: currentColor;
+}
+
+.calls-input[aria-invalid='true'] {
+  outline: 2px solid #b91c1c;
+}
+
+.calls.saved {
+  background: #dbeafe;
+  border-color: #1d4ed8;
+  color: #1e3a8a;
+}
+
+.calls.pending {
+  background: #fef3c7;
+  border-color: #b45309;
+  color: #78350f;
+  line-height: 22px;
+}
+
+.calls.rejected {
+  background: #fee2e2;
+  border-color: #b91c1c;
+  color: #7f1d1d;
+}
+
+footer {
+  display: flex;
+  gap: 20px;
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+footer .error {
+  margin-left: auto;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #fee2e2;
+  color: #7f1d1d;
+}
